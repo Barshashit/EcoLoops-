@@ -1,0 +1,33 @@
+/* Home.css */
+
+.home-container {
+   
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.hero-section {
+  grid-column: span 3;
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  background-color: white;
+  padding: 16px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}

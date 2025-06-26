@@ -1,0 +1,71 @@
+/* Header.css */
+
+
+.header {
+  
+  background-color:  #004f9a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  color: white;
+  font-family: Arial, sans-serif;
+  gap: 20px;
+}
+
+.header-logo {
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.header-logo img {
+  height: 30px; /* or 25px */
+}
+.header-menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.menu-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+}
+
+.menu-cart span:first-child {
+  font-size: 20px;
+}
+
+.menu-cart span:last-child {
+  font-weight: bold;
+}
+
+
+.header-location {
+  background-color: white;
+  color: #0071dc;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.header-search {
+  flex: 1;
+  display: flex;
+  margin-left: 20px;
+}
+
+.header-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  outline: none;
+}
