@@ -3,6 +3,7 @@ import Home from './component/Home/Home';
 import Header from './component/Header/Header';
 import TopMenu from './component/Topmenu/Topmenu';
 import Banner from './component/Banner/Banner';
+import Footer from './component/Footer/Footer';
 const App = () => {
   return (
     <div>
@@ -10,6 +11,7 @@ const App = () => {
       <Header/>
      <TopMenu/>
      <Banner/>
+     <Footer/>
     </div>
   );
 };

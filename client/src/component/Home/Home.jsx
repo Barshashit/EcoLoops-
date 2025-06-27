@@ -6,56 +6,49 @@ import './Home.css';
 const Home = () => {
   return (
     <div className="home-container">
-      {/* Hero Banner Section */}
-      <div className="hero-section">
-        <div>
-          <h2>Save more with<br />Resold at Walmart</h2>
-          <button>Shop now</button>
+
+      {/* LEFT COLUMN */}
+      <div className="left-column">
+        <div className="card">
+          <img src="/images/img1.png" alt="Item 1" />
+          <p>Shop now</p>
         </div>
-        <img
-          src="https://i5.walmartimages.com/seo/Craftsman-6-Gallon-Single-Stage-Portable-Electric-Pancake-Air-Compressor-CMV6150_4b2dfd0f-ec9a-4035-8bd0-33db8b2a7b30.529729cfab18e2629c2f65bc09e7a1a7.jpeg"
-          alt="Craftsman Compressor"
-          style={{ width: '300px', borderRadius: '10px' }}
-        />
+        <div className="card">
+          <img src="/images/img2.png" alt="Item 2" />
+          <p>Shop now</p>
+        </div>
+        <div className="card">
+          <img src="/images/img3.png" alt="Item 3" />
+          <p>Shop now</p>
+        </div>
       </div>
 
-      {/* Cards Section */}
-      <div className="card">
-        <h4>Last-minute July 4th faves</h4>
-        <button>Shop now</button>
+      {/* CENTER COLUMN */}
+      <div className="center-column">
+        <img src="/images/img4.png" alt="Big Banner" />
       </div>
 
-      <div className="card">
-        <h4>Scoop—only at Walmart</h4>
-        <button>Shop now</button>
+      {/* RIGHT COLUMN */}
+      <div className="right-column">
+        <div className="card">
+          <img src="/images/img5.png" alt="Item 4" />
+          <p>Shop now</p>
+        </div>
+        <div className="card">
+          <img src="/images/img6.png" alt="Item 5" />
+          <p>Shop now</p>
+        </div>
+        <div className="card">
+          <img src="/images/img7.png" alt="Item 6" />
+          <p>Shop now</p>
+        </div>
       </div>
 
-      <div className="card">
-        <h4>Premium beauty. Victoria’s Secret.</h4>
-        <button>Shop now</button>
-      </div>
-
-      <div className="card">
-        <h4>Oklahoma City Thunder NBA champs gear</h4>
-        <button>Shop now</button>
-      </div>
-
-      <div className="card">
-        <h4>Everything for July 4th</h4>
-        <button>Shop now</button>
-      </div>
-
-      <div className="card">
-        <h4>Up to 55% off</h4>
-        <button>Shop now</button>
-      </div>
-
-      <div className="card">
-        <h4>Summer savings on cleaning & more</h4>
-        <button>Shop now</button>
-      </div>
     </div>
   );
 };
 
 export default Home;
+
+
+
