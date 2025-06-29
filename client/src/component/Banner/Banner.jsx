@@ -4,31 +4,39 @@ import './Banner.css';
 const Banner = () => {
   return (
     <div className="banner-container">
-      {/* Block 1 */}
-      <div className="banner-block">
-        <img src="/images/img1.png" alt="Banner 1" />
-        <img src="/images/img2.png" alt="Banner 2" />
-         <img src="/images/img8.png" alt="Banner 7" />
-      </div>
 
-      {/* Block 2 - Wide */}
-      <div className="banner-block wide">
-        <img src="/images/hero.img.png" alt="Banner 3" className="wide-top" />
-        <div className="wide-bottom-row">
-          <img src="/images/img3.png" alt="Banner 4" />
-          <img src="/images/img4.png" alt="Banner 5" />
+      {/* Top row with 3 columns */}
+      <div className="banner-top-row">
+        {/* Left Column */}
+        <div className="banner-column side-column">
+          <img src="/images/img1.png" alt="img1" />
+           <img src="/images/hero.img.png" alt="hero" />
         </div>
-        
+
+        {/* Middle Column (Hero) */}
+        <div className="banner-column middle-column">
+          <img src="/images/img2.png" alt="img2" />
+         
+          
+        </div>
+
+        {/* Right Column */}
+        <div className="banner-column side-column">
+          <img src="/images/img5.png" alt="img5" />
+          <img src="/images/img6.png" alt="img6" />
+        </div>
       </div>
 
-      {/* Block 3 */}
-      <div className="banner-block">
-        <img src="/images/img5.png" alt="Banner 6" />
-        <img src="/images/img6.png" alt="Banner 7" />
-         <img src="/images/img7.png" alt="Banner 7" />
+      {/* Bottom row with 4 images horizontally */}
+      <div className="banner-bottom-row">
+        <img src="/images/img3.png" alt="img3" />
+        <img src="/images/img4.png" alt="img4" />
+        <img src="/images/img7.png" alt="img7" />
+        <img src="/images/img8.png" alt="img8" />
       </div>
+
     </div>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;
