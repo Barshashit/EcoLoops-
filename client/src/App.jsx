@@ -1,18 +1,31 @@
 import React from 'react';
-import Home from './component/Home/Home';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './component/Header/Header';
 import TopMenu from './component/Topmenu/Topmenu';
 import Banner from './component/Banner/Banner';
 import Footer from './component/Footer/Footer';
+import SearchResults from './component/SearchResults/SearchResults';
+
 const App = () => {
   return (
-    <div>
-      
-      <Header/>
-     <TopMenu/>
-     <Banner/>
-     <Footer/>
-    </div>
+   <Router>
+      <Header />
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <TopMenu />
+              <Banner />
+            </>
+          }
+        />
+        <Route path="/products" element={<SearchResults />} />
+      </Routes>
+
+      <Footer />
+    </Router>
   );
 };
 
