@@ -1,10 +1,11 @@
+
 // src/App.jsx
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./component/Home/Home";
 import Auth from "./component/Auth/Auth";
-import Login from "./component/Auth/Login";
-import Signup from "./component/Auth/Signup";
+import Login from "./component/Auth/login";
+import Signup from "./component/Auth/signup";
 import MainLayout from "./Layout/mainlayout";
 import AuthLayout from "./Layout/authlayout";
 

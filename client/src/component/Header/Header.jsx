@@ -1,10 +1,10 @@
+
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
   const navigate = useNavigate();
-
   return (
     <div className="header">
       {/* Walmart Logo */}
@@ -33,7 +33,6 @@ const Header = () => {
           <span>Reorder</span>
           <span>My Items</span>
         </div>
-
         {/* Block 2 (Account Block - navigates to /auth) */}
         <div className="menu-block" onClick={() => navigate("/auth")}>
           <span>Sign In</span>
@@ -51,5 +50,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
