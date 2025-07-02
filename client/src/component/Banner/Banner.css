@@ -1,64 +1,90 @@
 .banner-container {
-  display: flex;
   padding: 20px;
-  background-color: #f5faff; /* very light blue */
-  gap: 20px;
-  justify-content: center;
-  align-items: stretch;  /* ensures same height */
-}
-
-/* Common styling for all 3 blocks */
-.banner-block {
+  background-color: #f5faff;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  height: 500px;         /* Ensures all blocks have same height */
-  overflow: hidden;
+  gap: 20px;
 }
 
-/* First and Third blocks: 25% width */
-.banner-block:not(.wide) {
-  flex: 1;
-}
-
-/* Middle block: 50% width */
-.banner-block.wide {
-  flex: 2;
-  justify-content: space-between;
-}
-
-/* All images */
-.banner-block img {
+/* Top row with 3 columns */
+.banner-top-row {
+  display: flex;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  gap: 20px;
+  height: 500px;
+}
+
+/* Common styling for columns */
+.banner-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Side columns (30% each) */
+.side-column {
+  width: 30%;
+}
+
+/* Middle column (40%) */
+.middle-column {
+  width: 40%;
+}
+
+/* Ensure stacked images split height equally */
+.side-column img {
+  height: 50%;
+  width: 100%;
+  object-fit: contain;
+
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* For blocks with 3 stacked images (first & third) */
-.banner-block:not(.wide) img {
-  height: calc(100% / 3);
-}
-
-/* Middle block: top image */
-.wide-top {
-  height: 33%;
-}
-
-/* Middle block: bottom two images */
-.wide-bottom-row {
-  display: flex;
-  gap: 10px;
-  height: 33%;
-}
-
-.wide-bottom-row img {
-  flex: 1;
+/* Hero image fills entire middle column */
+.middle-column img {
+  width: 100%;
   height: 100%;
+ object-fit: contain;
+
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* Optional spacing for third image in middle block */
-.wide-extra {
-  height: 33%;
+/* Bottom row - 4 images horizontally */
+.banner-bottom-row {
+  display: flex;
+  gap: 20px;
+  height: 250px;
+  justify-content: space-between;
+}
+
+.banner-bottom-row img {
+  flex: 1;
+  object-fit: cover;
+
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+/* Shared styling for all images */
+.banner-column img,
+.banner-bottom-row img {
+ 
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  border: 2px solid #f0f0f0; /* Optional light border */
+}
+
+/* Hover effect */
+.banner-column img:hover,
+.banner-bottom-row img:hover {
+  transform: scale(1.03); /* Slight zoom effect */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  
+  z-index: 2;
 }
