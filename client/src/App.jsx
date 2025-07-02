@@ -8,7 +8,7 @@ import Login from "./component/Auth/login";
 import Signup from "./component/Auth/signup";
 import MainLayout from "./Layout/mainlayout";
 import AuthLayout from "./Layout/authlayout";
-
+import SearchResults from "./component/SearchResults/SearchResults";
 const App = () => {
   return (
     <BrowserRouter>
@@ -19,6 +19,15 @@ const App = () => {
           element={
             <MainLayout>
               <Home />
+            </MainLayout>
+          }
+        />
+         {/* Search Results page */}
+        <Route
+          path="/products"
+          element={
+            <MainLayout>
+              <SearchResults />
             </MainLayout>
           }
         />

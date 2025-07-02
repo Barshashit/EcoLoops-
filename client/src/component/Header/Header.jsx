@@ -1,10 +1,17 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
+  const [search, setSearch] = useState("");
   const navigate = useNavigate();
+   const handleSearch = (e) => {
+    e.preventDefault();
+    if (search.trim()) {
+      navigate(`/products?query=${encodeURIComponent(search.trim())}`);
+    }
+  };
   return (
     <div className="header">
       {/* Walmart Logo */}
@@ -16,15 +23,18 @@ const Header = () => {
       <div className="header-location">
         Pickup or delivery? Sacramento, 95829 ▾
       </div>
-
-      {/* Search Bar */}
-      <div className="header-search">
+  {/* Search Bar */}
+      <form className="header-search" onSubmit={handleSearch}>
         <input
           type="text"
           placeholder="Search everything at Walmart online and in store"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
-        <span className="search-icon">🔍</span>
-      </div>
+        <button type="submit" className="search-icon" aria-label="Search">
+          🔍
+        </button>
+      </form>
 
       {/* Header Right Menu */}
       <div className="header-menu">

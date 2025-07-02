@@ -8,7 +8,7 @@ import './SearchResults.css';
 const SearchResults = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const searchTerm = queryParams.get('search')?.toLowerCase() || '';
+  const searchTerm = queryParams.get('query')?.toLowerCase() || '';
 
   const filteredProducts = productData.filter(product =>
     product.name.toLowerCase().includes(searchTerm) ||
