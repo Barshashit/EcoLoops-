@@ -27,6 +27,10 @@ const SearchResults = () => {
         <div className="product-grid">
           {filteredProducts.map(product => (
             <div key={product.id} className="product-card">
+              <a href={`/${product.htmlFile}`} target="_blank" rel="noopener noreferrer" className='"view-product-link'>
+  View Product
+</a>
+
               <img
                 src={product.image}
                 alt={product.name}

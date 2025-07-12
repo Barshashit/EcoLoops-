@@ -9,13 +9,14 @@ const products = [
     sustainability_score: 92,
     carbon_footprint: 0.25,
     reward_points: 15,
-    image: "/images/N1.webp",
+    image: "/images/N2.webp",
     eco_friendly_materials: true,
     recyclable_packaging: true,
     biodegradable_components: true,
     certifications: ["Recycled Paper", "Eco-Friendly Materials"],
     near_expiry: false,
     green_alternative_available: false,
+    htmlFile: "N2.htm"
   },
   {
     id: "notebook-2",
@@ -26,13 +27,14 @@ const products = [
     carbon_footprint: 0.4,
     reward_points: 12,
     price: "$4.49",
-    image: "/images/N2.webp",
+    image: "/images/N1.webp",
     eco_friendly_materials: true,
     recyclable_packaging: true,
     biodegradable_components: true,
     certifications: ["FSC Certified", "Recyclable Packaging"],
     near_expiry: false,
     green_alternative_available: false,
+    htmlFile: "N1.htm"
   },
   {
     id: "notebook-3",
@@ -50,6 +52,7 @@ const products = [
     certifications: [],
     near_expiry: false,
     green_alternative_available: true,
+    htmlFile: "N3.htm"
   },
   {
     id: "notebook-4",
@@ -67,6 +70,7 @@ const products = [
     certifications: [],
     near_expiry: false,
     green_alternative_available: false,
+    htmlFile: "N4.htm"
   },
   {
     id: "notebook-5",
@@ -84,6 +88,7 @@ const products = [
     certifications: [],
     near_expiry: false,
     green_alternative_available: true,
+    htmlFile: "N5.htm"
   },
   {
   id: 6,
@@ -111,6 +116,7 @@ const products = [
     biodegradable_components: false,
     certifications: [],
     green_alternative_available: true,
+    htmlFile: "B1.htm"
   },
   {
     id: "bag-2",
@@ -127,6 +133,7 @@ const products = [
     biodegradable_components: false,
     certifications: [],
     green_alternative_available: true,
+    htmlFile: "B2.htm"
   },
   {
     id: "bag-3",
@@ -143,6 +150,7 @@ const products = [
     biodegradable_components: false,
     certifications: [],
     green_alternative_available: true,
+    htmlFile: "B3.htm"
   },
   {
     id: "bag-4",
@@ -159,6 +167,7 @@ const products = [
     biodegradable_components: false,
     certifications: [],
     green_alternative_available: true,
+    htmlFile: "B4.htm"
   },
   {
     id: "bag-5",
@@ -175,6 +184,7 @@ const products = [
     biodegradable_components: false,
     certifications: [],
     green_alternative_available: true,
+    htmlFile: "B5.htm"
   },
   {
   id: 6,
@@ -202,6 +212,7 @@ const products = [
     biodegradable_components: false,
     certifications: ["RoHS"],
     green_alternative_available: true,
+    htmlFile: "E1.htm"
   },
   {
     id: "elec-2",
@@ -218,6 +229,7 @@ const products = [
     biodegradable_components: false,
     certifications: ["ETL", "RoHS"],
     green_alternative_available: false,
+    htmlFile: "E2.htm"
   },
   {
     id: "elec-3",
@@ -234,6 +246,7 @@ const products = [
     biodegradable_components: false,
     certifications: ["ETL", "FCC", "RoHS"],
     green_alternative_available: true,
+    htmlFile: "E3.htm"
   },
   {
     id: "elec-4",
@@ -250,6 +263,7 @@ const products = [
     biodegradable_components: false,
     certifications: ["FCC", "CE", "RoHS"],
     green_alternative_available: true,
+    htmlFile: "E4.htm"
   },
   {
     id: "elec-5",
@@ -266,6 +280,7 @@ const products = [
     biodegradable_components: false,
     certifications: ["MFi", "RoHS"],
     green_alternative_available: true,
+    htmlFile: "E5.htm"
   },
   {
   id: 6,
