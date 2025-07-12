@@ -36,6 +36,7 @@ const ImpactStats = ({ data, onBack }) => {
       <div className="impact-stats-actions">
         <button className="share-btn" type="button" title="Share (UI only)">Share</button>
         <button className="back-btn" type="button" onClick={onBack}>Recycle Another Item</button>
+        <button className="back-btn" type="button"  onClick={() => window.location.href = "/success/success.html"} >Confirm Recycle</button>
       </div>
     </div>
   );
