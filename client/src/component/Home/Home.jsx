@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Home = () => {
+  useEffect(() => {
+    console.log("🏠 Home page rendered");
+  }, []);
   return (
     <div style={{ padding: "2rem" }}>
       <h1>Welcome to Ecoloops</h1>

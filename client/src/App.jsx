@@ -1,7 +1,5 @@
-
-// src/App.jsx
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./component/Home/Home";
 import Auth from "./component/Auth/Auth";
 import Login from "./component/Auth/login";
@@ -9,59 +7,71 @@ import Signup from "./component/Auth/signup";
 import MainLayout from "./Layout/mainlayout";
 import AuthLayout from "./Layout/authlayout";
 import SearchResults from "./component/SearchResults/SearchResults";
+import AccountHistory from "./component/Account/AccountHistory";
+import Header from "./component/Header/Header";
+import Banner from "./component/Banner/Banner";
+import FAQChatbot from "./component/FAQChatbot/FAQChatbot";
+import RecyclePage from './component/Recycle/RecyclePage';
+
 const App = () => {
+  // CHANGE 1: Consolidate to single user state
+  const [user, setUser] = useState(null);
+
+  // CHANGE 2: Add effect to check localStorage on mount
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch (e) {
+        localStorage.removeItem("user");
+      }
+    }
+  }, []);
+
+  // CHANGE 3: Unified login handler
+  const handleLogin = (userData) => {
+    setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
+  };
+
+  // CHANGE 4: Complete logout handler
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+  };
+
   return (
     <BrowserRouter>
+      {/* CHANGE 5: Pass full user object instead of separate userName */}
       <Routes>
-        {/* Pages with full layout */}
+        <Route path="/" element={<MainLayout><Home /><Banner /></MainLayout>} />
+        <Route path="/products" element={<MainLayout><SearchResults /></MainLayout>} />
         <Route
-          path="/"
-          element={
-            <MainLayout>
-              <Home />
-            </MainLayout>
-          }
+          path="/account/history"
+          element={user ? <MainLayout><AccountHistory /></MainLayout> : <Navigate to="/auth" />}
         />
-         {/* Search Results page */}
         <Route
-          path="/products"
-          element={
-            <MainLayout>
-              <SearchResults />
-            </MainLayout>
-          }
+          path="/recycle"
+          element={user ? <MainLayout><RecyclePage /></MainLayout> : <Navigate to="/auth" />}
         />
-
-        {/* Auth pages with minimal layout */}
-        <Route
-          path="/auth"
-          element={
-            <AuthLayout>
-              <Auth />
-            </AuthLayout>
-          }
-        />
+        <Route path="/auth" element={<AuthLayout><Auth /></AuthLayout>} />
         <Route
           path="/login"
-          element={
-            <AuthLayout>
-              <Login />
-            </AuthLayout>
-          }
+          element={<AuthLayout><Login onLogin={handleLogin} /></AuthLayout>}
         />
         <Route
           path="/signup"
-          element={
-            <AuthLayout>
-              <Signup />
-            </AuthLayout>
-          }
+          element={<AuthLayout><Signup onSignup={handleLogin} /></AuthLayout>}
         />
       </Routes>
+       <FAQChatbot />
     </BrowserRouter>
   );
 };
 
 export default App;
+
 
 

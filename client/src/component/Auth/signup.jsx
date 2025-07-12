@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import "./signup.css";
 import axios from "axios";
+import "./signup.css"; // Make sure this CSS file exists
 
 const Signup = ({ setUserName }) => {
   const [form, setForm] = useState({
@@ -11,116 +11,175 @@ const Signup = ({ setUserName }) => {
     dob: "",
     password: ""
   });
-
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (location.state?.phone) {
-      setForm((prev) => ({ ...prev, phone: location.state.phone }));
+      console.log("Pre-filled phone from state:", location.state.phone);
+      setForm(prev => ({ ...prev, phone: location.state.phone }));
     }
   }, [location]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    console.log("Attempting signup with:", form);
+
+    // Basic validation
     if (!form.name || !form.email || !form.phone || !form.dob || !form.password) {
-      alert("All fields required");
+      setError("All fields are required");
+      setLoading(false);
+      return;
+    }
+
+    // Phone number validation (basic)
+    if (!/^\d{10}$/.test(form.phone)) {
+      setError("Phone number must be 10 digits");
+      setLoading(false);
       return;
     }
 
     try {
+      console.log("Sending signup request...");
+      const startTime = Date.now();
+      
       const res = await axios.post(
-        `http://localhost:5000/api/auth/signup?_=${Date.now()}`,
+        "http://localhost:5000/api/auth/signup",
         form,
         {
           headers: {
-            "Cache-Control": "no-cache",
-          },
+            "Content-Type": "application/json"
+          }
         }
       );
 
-      console.log("Full Axios response:", res);
-      console.log("res.status:", res.status);
-      console.log("res.data:", res.data);
+      console.log(`Signup response (${Date.now() - startTime}ms):`, res.data);
+      console.log("Response status:", res.status);
 
-      // ✅ Only proceed if signup is successful
-      if (res.data.token && res.data.name) {
-        const { name, token } = res.data;
-        localStorage.setItem("token", token);
-        setUserName(name);
-        alert("Signup successful!");
-        navigate("/");
+      if (res.status === 201) {
+        if (res.data.token) {
+          console.log("Signup successful! Token received");
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("userName", res.data.name);
+          setUserName(res.data.name);
+          navigate("/");
+        } else {
+          throw new Error("No token in response");
+        }
       } else {
-        // ❌ Show backend message if signup was not successful
-        alert(res.data.msg || "Signup failed");
+        throw new Error(`Unexpected status: ${res.status}`);
       }
     } catch (err) {
       console.error("Signup error:", err);
-      alert(err.response?.data?.msg || "Signup failed");
+      const errorMessage = err.response?.data?.msg || 
+                         err.message || 
+                         "Signup failed. Please try again.";
+      setError(errorMessage);
+      console.log("Error details:", {
+        response: err.response,
+        request: err.request,
+        config: err.config
+      });
+    } finally {
+      setLoading(false);
     }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   return (
     <div className="signup-wrapper">
       <div className="signup-box">
         <h2>Create Your Account</h2>
-        <table className="signup-table">
-          <tbody>
-            <tr>
-              <td><label>Full Name</label></td>
-              <td>
-                <input
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td><label>Email</label></td>
-              <td>
-                <input
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td><label>Phone</label></td>
-              <td>
-                <input
-                  value={form.phone}
-                  readOnly
-                />
-              </td>
-            </tr>
-            <tr>
-              <td><label>DOB</label></td>
-              <td>
-                <input
-                  type="date"
-                  value={form.dob}
-                  onChange={(e) => setForm({ ...form, dob: e.target.value })}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td><label>Password</label></td>
-              <td>
-                <input
-                  type="password"
-                  value={form.password}
-                  onChange={(e) => setForm({ ...form, password: e.target.value })}
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <button onClick={handleSubmit}>Sign Up</button>
+        {error && <div className="error-alert">{error}</div>}
+
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Full Name</label>
+            <input
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              disabled={loading}
+            />
+          </div>
+          
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              name="email"
+              type="email"
+              value={form.email}
+              onChange={handleChange}
+              disabled={loading}
+            />
+          </div>
+          
+          <div className="form-group">
+            <label>Phone</label>
+            <input
+              name="phone"
+              type="tel"
+              value={form.phone}
+              onChange={handleChange}
+              disabled={!!location.state?.phone || loading}
+            />
+          </div>
+          
+          <div className="form-group">
+            <label>Date of Birth</label>
+            <input
+              name="dob"
+              type="date"
+              value={form.dob}
+              onChange={handleChange}
+              disabled={loading}
+            />
+          </div>
+          
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              name="password"
+              type="password"
+              value={form.password}
+              onChange={handleChange}
+              disabled={loading}
+            />
+          </div>
+
+          <button 
+            type="submit" 
+            disabled={loading}
+            className={loading ? "loading" : ""}
+          >
+            {loading ? "Creating Account..." : "Sign Up"}
+          </button>
+        </form>
+      </div>
+
+      {/* Debug panel - remove in production */}
+      <div className="debug-panel">
+        <h3>Debug Info</h3>
+        <div>Form State: {JSON.stringify(form)}</div>
+        <div>Loading: {loading.toString()}</div>
+        <div>Error: {error}</div>
       </div>
     </div>
   );
 };
 
 export default Signup;
+
 
 
 

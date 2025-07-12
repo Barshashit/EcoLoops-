@@ -14,7 +14,11 @@ app.use((req, res, next) => {
 });
 
 // MIDDLEWARES
-app.use(cors());
+const corsOptions = {
+  origin: "http://localhost:5173", // frontend URL
+  credentials: true,               // allow cookies / auth headers
+};
+app.use(cors(corsOptions));
 app.use(express.json()); // ✅ Important for req.body in POST
 
 // ROUTES
