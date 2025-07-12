@@ -6,9 +6,9 @@ const ImpactStats = ({ data, onBack }) => {
   return (
     <div className="impact-stats-card redesigned-impact-card">
       <div className="impact-header">
-        <h3>🎉 Thank you for recycling!</h3>
+        <h3> Product Recycling!</h3>
         <div className="eco-coins-earned big-coins">
-          +{data.coins} <span role="img" aria-label="EcoCoins">🪙</span>
+          +{data.coins} <span role="img" aria-label="EcoCoins">🪙<h3>On your way!</h3></span>
         </div>
       </div>
       <div className="impact-main-row">
