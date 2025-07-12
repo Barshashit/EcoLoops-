@@ -4,10 +4,10 @@ import Topmenu from "../component/Topmenu/Topmenu";
 import Footer from "../component/Footer/Footer";
 
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({ children, user, onLogout }) => {
   return (
     <>
-      <Header />
+      <Header user={user} onLogout={onLogout} />
       <Topmenu />
       {children}
       <Footer />

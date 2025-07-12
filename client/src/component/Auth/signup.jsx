@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./signup.css"; // Make sure this CSS file exists
 
-const Signup = ({ setUserName }) => {
+const Signup = ({ onSignup }) => {
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -64,7 +64,10 @@ const Signup = ({ setUserName }) => {
           console.log("Signup successful! Token received");
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("userName", res.data.name);
-          setUserName(res.data.name);
+          onSignup({
+            name: res.data.name,
+            email: res.data.email
+          });
           navigate("/");
         } else {
           throw new Error("No token in response");

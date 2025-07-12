@@ -46,15 +46,15 @@ const App = () => {
     <BrowserRouter>
       {/* CHANGE 5: Pass full user object instead of separate userName */}
       <Routes>
-        <Route path="/" element={<MainLayout><Home /><Banner /></MainLayout>} />
-        <Route path="/products" element={<MainLayout><SearchResults /></MainLayout>} />
+        <Route path="/" element={<MainLayout user={user} onLogout={handleLogout}><Home /><Banner /></MainLayout>} />
+        <Route path="/products" element={<MainLayout user={user} onLogout={handleLogout}><SearchResults /></MainLayout>} />
         <Route
           path="/account/history"
-          element={user ? <MainLayout><AccountHistory /></MainLayout> : <Navigate to="/auth" />}
+          element={user ? <MainLayout user={user} onLogout={handleLogout}><AccountHistory /></MainLayout> : <Navigate to="/auth" />}
         />
         <Route
           path="/recycle"
-          element={user ? <MainLayout><RecyclePage /></MainLayout> : <Navigate to="/auth" />}
+          element={user ? <MainLayout user={user} onLogout={handleLogout}><RecyclePage /></MainLayout> : <Navigate to="/auth" />}
         />
         <Route path="/auth" element={<AuthLayout><Auth /></AuthLayout>} />
         <Route
