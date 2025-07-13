@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import "./Auth.css";
 
 const Auth = () => {
   const [input, setInput] = useState("");
@@ -24,15 +25,20 @@ const Auth = () => {
   };
 
   return (
-    <div className="auth-container">
-      <h2>Enter your phone number</h2>
-      <input
-        type="tel"
-        placeholder="Phone number"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
-      <button onClick={handleContinue}>Continue</button>
+    <div className="auth-wrapper">
+      <div className="auth-box">
+        <h2>Enter your phone number</h2>
+        <input
+          type="tel"
+          placeholder="Phone number"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          className="auth-input"
+        />
+        <button onClick={handleContinue} className="auth-button">
+          Continue
+        </button>
+      </div>
     </div>
   );
 };

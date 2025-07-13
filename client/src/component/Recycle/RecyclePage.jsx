@@ -1,17 +1,20 @@
-import React from "react";
-import "../Account/AccountHistory.css"; // Reuse sidebar styles
-import "./Recycle.css"; // For any new styles (keep minimal for now)
+import React, { useState, useEffect } from "react";
+import "./Recycle.css";
 import EcoCoinsProgress from "./EcoCoinsProgress";
 import RecycleForm from "./RecycleForm";
 import ImpactStats from "./ImpactStats";
 
 const RecyclePage = () => {
-  // Progress state starts at 0, updates after recycling
-  const [ecoCoins, setEcoCoins] = React.useState(0);
-  const [showImpact, setShowImpact] = React.useState(false);
-  const [impactData, setImpactData] = React.useState(null);
+  const [ecoCoins, setEcoCoins] = useState(0);
+  const [showImpact, setShowImpact] = useState(false);
+  const [impactData, setImpactData] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-  // Handler to show impact after form submission and update progress
+  useEffect(() => {
+    // Animation trigger when component mounts
+    setIsVisible(true);
+  }, []);
+
   const handleRecycle = (data) => {
     setImpactData(data);
     setShowImpact(true);
@@ -19,29 +22,82 @@ const RecyclePage = () => {
   };
 
   return (
-    <div className="account-history-container">
-      <aside className="account-sidebar">
-        <div className="sidebar-section">
-          <h4>Recycle History</h4>
+    <div className={`recycle-page ${isVisible ? 'animate-in' : ''}`}>
+      <div className="recycle-header">
+        <h1 className="recycle-title">
+          <span className="eco-icon">♻️</span>
+          Recycle & Earn Rewards
+        </h1>
+        <p className="recycle-subtitle">
+          Transform your waste into worth. Every item you recycle helps save our planet!
+        </p>
+      </div>
+
+      <div className="recycle-content">
+        <div className="recycle-main">
+          <div className="progress-section">
+            <EcoCoinsProgress current={ecoCoins} nextMilestone={200} />
+          </div>
+          
+          <div className="form-section">
+            {!showImpact ? (
+              <RecycleForm onRecycle={handleRecycle} />
+            ) : (
+              <ImpactStats data={impactData} onBack={() => setShowImpact(false)} />
+            )}
+          </div>
         </div>
-        <div className="sidebar-section">
-          <h4>EcoBadges</h4>
+
+        <div className="recycle-sidebar">
+          <div className="sidebar-card">
+            <h3>🌱 Your Impact</h3>
+            <div className="impact-summary">
+              <div className="impact-item">
+                <span className="impact-number">{ecoCoins}</span>
+                <span className="impact-label">EcoCoins Earned</span>
+              </div>
+              <div className="impact-item">
+                <span className="impact-number">{(ecoCoins * 0.5).toFixed(1)}kg</span>
+                <span className="impact-label">CO₂ Saved</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="sidebar-card">
+            <h3>�� Achievements</h3>
+            <div className="achievements-list">
+              <div className="achievement-item">
+                <span className="achievement-icon">🌿</span>
+                <span>First Recycle</span>
+              </div>
+              <div className="achievement-item">
+                <span className="achievement-icon">🌍</span>
+                <span>Eco Warrior</span>
+              </div>
+              <div className="achievement-item locked">
+                <span className="achievement-icon">👑</span>
+                <span>Recycling Master</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="sidebar-card">
+            <h3>📊 Quick Stats</h3>
+            <div className="stats-grid">
+              <div className="stat-box">
+                <span className="stat-number">15</span>
+                <span className="stat-label">Items Recycled</span>
+              </div>
+              <div className="stat-box">
+                <span className="stat-number">7.5kg</span>
+                <span className="stat-label">Waste Diverted</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="sidebar-section">
-          <h4>EcoCoins</h4>
-        </div>
-      </aside>
-      <main className="account-main">
-        <h2>Recycle an Item</h2>
-        <EcoCoinsProgress current={ecoCoins} nextMilestone={200} />
-        {!showImpact ? (
-          <RecycleForm onRecycle={handleRecycle} />
-        ) : (
-          <ImpactStats data={impactData} onBack={() => setShowImpact(false)} />
-        )}
-      </main>
+      </div>
     </div>
   );
 };
 
-export default RecyclePage; 
+export default RecyclePage;
