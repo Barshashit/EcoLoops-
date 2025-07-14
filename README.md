@@ -37,10 +37,11 @@ EcoLoops is a two-part sustainability solution integrated into Walmart’s websi
 
 ## *📸 Project Screenshots*
 ![EcoTrackProdectPage](https://github.com/user-attachments/assets/2686138f-ef4d-4eff-b241-e056bf670609)
-![EcoTrackProdectPage](https://github.com/user-attachments/assets/7674461a-4f48-4333-a170-ef0d92e39260)
-![EcoTrackProdectPage](https://github.com/user-attachments/assets/c5d4f728-dc42-4fba-840c-c4a0badfb656)
-![EcoTrackProdectPage](https://github.com/user-attachments/assets/322c14d4-441f-44ec-86d1-e56f8c7653f8)
-![EcoTrackProdectPage](https://github.com/user-attachments/assets/c1018227-ba3e-4c5a-b65b-74d8d7be38d7)
+![RecyclePage1Page](https://github.com/user-attachments/assets/7674461a-4f48-4333-a170-ef0d92e39260)
+![RecyclePage2](https://github.com/user-attachments/assets/c5d4f728-dc42-4fba-840c-c4a0badfb656)
+![ExampleRecyclePage](https://github.com/user-attachments/assets/322c14d4-441f-44ec-86d1-e56f8c7653f8)
+![waste-to-wallet](https://github.com/user-attachments/assets/c1018227-ba3e-4c5a-b65b-74d8d7be38d7)
+### For [SuccessPageVideo!](https://github.com/user-attachments/assets/e8cb51ec-9b84-49ca-8607-6e9ed2eff9b4)
 
 
 ## *🚀 Tech Stack*
