@@ -6,40 +6,44 @@
 # Ecoloops – Creating the Sustainability Loop with Walmart
 Empowering conscious shopping decisions and rewarding responsible recycling.
 
-## 🌿 What is EcoLoops?
+## *🌿 What is EcoLoops?*
 EcoLoops is a two-part sustainability solution integrated into Walmart’s website and app:
 
 
-### *1️. EcoTrack*
+### 1️. EcoTrack
 
 * Displays Sustainability Scores on product pages
 * Shows carbon footprint, recyclability, ethical sourcing
 * Suggests greener alternatives
 
 
-### *2️. Waste-to-Wallet*
+### 2️. Waste-to-Wallet
 
 * Lets customers return packaging, electronics, or clothing for recycling
 * We schedules the pickup as our convenience
 * Customers earn reward points added to their Walmart Wallet
 
 
-## 🎯 Problem Statement
+## *🎯 Problem Statement*
 
 - Customers want to shop sustainably but lack transparency about product impact.
 - Post-purchase, there’s no easy, rewarding way to recycle packaging or used products.
 
 
-## 💡 Our Solution
+## *💡 Our Solution*
 
 * EcoTrack: Make informed eco-friendly choices before purchase.
 * Waste-to-Wallet: Return recyclable items post-purchase and earn rewards.
 
-### 📸 Project Screenshots
-(Attach screenshots or link to your video demo)
+## *📸 Project Screenshots*
+![EcoTrackProdectPage](https://github.com/user-attachments/assets/2686138f-ef4d-4eff-b241-e056bf670609)
+![EcoTrackProdectPage](https://github.com/user-attachments/assets/7674461a-4f48-4333-a170-ef0d92e39260)
+![EcoTrackProdectPage](https://github.com/user-attachments/assets/c5d4f728-dc42-4fba-840c-c4a0badfb656)
+![EcoTrackProdectPage](https://github.com/user-attachments/assets/322c14d4-441f-44ec-86d1-e56f8c7653f8)
+![EcoTrackProdectPage](https://github.com/user-attachments/assets/c1018227-ba3e-4c5a-b65b-74d8d7be38d7)
 
 
-## 🚀 Tech Stack
+## *🚀 Tech Stack*
 
 - React.js
 - Vite
@@ -48,8 +52,7 @@ EcoLoops is a two-part sustainability solution integrated into Walmart’s websi
 - Node.js
 
 
-### 🏆 Submitted For
+### *🏆 Submitted For*
 
-Walmart Sparkathon 2025
-
-Theme: Retail with purpose : Building a sustainable and responsible future
+###### *Walmart Sparkathon 2025*
+###### *Theme: Retail with purpose : Building a sustainable and responsible future*
